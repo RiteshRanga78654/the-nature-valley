@@ -443,7 +443,7 @@ const Page = () => {
           >
             <div className="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
             <img
-              src="/assets/images/nature-City-map.jpg"
+              src="/assets/images/nature-city-map.jpg"
               alt="The Nature City Site Map"
               className="w-full h-[400px] md:h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
             />
