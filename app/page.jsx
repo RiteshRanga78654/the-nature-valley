@@ -2,19 +2,22 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 import Slider from "./components/Slider";
 import Footer from "./components/Footer";
 
-
-
 const Page = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("learn");
   const [currentBrochureIndex, setCurrentBrochureIndex] = useState(0);
 
   const brochureImages = [
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1000",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000",
+    "/assets/images/db-the-nature-city.jpeg",
+    "/assets/images/hero image.jfif",
+    "assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.24 PM.jpeg",
+    "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.21 PM (1).jpeg",
+    "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.15 PM (1).jpeg"
   ];
 
   // 1. State for tracking hovered FAQ to change background
@@ -22,10 +25,10 @@ const Page = () => {
 
   // 2. Images that will fade-in when you hover over questions
   const faqBgImages = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200", // Architecture
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200", // Financials
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200", // Returns
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200", // Facilities
+   "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.22 PM (2).jpeg",
+  "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.17 PM.jpeg",
+  "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.18 PM (1).jpeg",
+   "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.18 PM.jpeg"
   ];
   const nextBrochure = () => {
     setCurrentBrochureIndex((prev) => (prev + 1) % brochureImages.length);
@@ -39,10 +42,10 @@ const Page = () => {
       price: "₹3.5Cr",
       size: "3175 sft built up",
       heroImg:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.59 AM (2).jpeg",
       floorPlans: [
-        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=800",
-        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.54 AM (1).jpeg",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.56 AM (2).jpeg",
       ],
     },
     west: {
@@ -50,10 +53,10 @@ const Page = () => {
       price: "₹3.4Cr",
       size: "3175 sft built up",
       heroImg:
-        "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.59 AM (1).jpeg",
       floorPlans: [
-        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800",
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.57 AM (1).jpeg",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.56 AM (1).jpeg",
       ],
     },
   };
@@ -89,8 +92,8 @@ const Page = () => {
               <nav className="flex flex-col gap-10">
                 {[
                   "Home",
-                  "Build a Villa",
                   "Invest in Plot",
+                  "Invest in Clubhouse",
                   "Brochure",
                   "Contact Us",
                 ].map((item, i) => (
@@ -114,9 +117,9 @@ const Page = () => {
       <header className="fixed top-0 w-full z-[150] flex items-center justify-between px-6 py-6 md:px-16 backdrop-blur-md bg-[#022c22]/20 border-b border-white/5">
         <div className="flex items-center gap-3  tracking-[0.3em] text-xs font-bold">
           <div className="h-10 w-10 flex items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg">
-            NV
+            NC
           </div>
-          <span>The Nature Valley</span>
+          <span>The Nature City</span>
         </div>
         <button
           onClick={() => setIsMenuOpen(true)}
@@ -131,103 +134,128 @@ const Page = () => {
           </div>
         </button>
       </header>
-      {/* 3. HERO SECTION */}
       {/* 3. HERO SECTION - REDUCED HEIGHT FOR FOLD VISIBILITY */}
       <section className="relative h-[85vh] md:h-[90vh] w-full flex items-center justify-center overflow-visible">
         {/* Background Image Container */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/assets/images/heroimg.jpg')",
-          }}
-        >
-          {/* Adjusted gradient to be lighter at the top and darker at the bottom for the toggle */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#022c22]/60"></div>
-        </div>
+       <div className="absolute inset-0 overflow-hidden">
+  <video
+    autoPlay
+    loop
+    playsInline
+    className="absolute inset-0 h-full w-full object-cover"
+  >
+    <source src="/assets/videos/herovideo.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-        {/* Hero Text Content */}
+  {/* Your existing gradient overlay remains the same */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#022c22]/60"></div>
+</div>
+         {/* Hero Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="relative z-10 text-center px-4 -mt-10"
         >
-          <h1 className="text-5xl md:text-[110px] leading-[0.85] font-Condensed Sans-Serif mb-6 text-emerald-400 tracking-tight">
-            Nature's Embrace 
-            
+         
+          {/* <h1 className="text-5xl md:text-[110px] leading-[0.85] font-Condensed Sans-Serif mb-6 text-emerald-400 tracking-tight">
+             Nature's Embrace
           </h1>
-          <p className="text-[9px] md:text-[15px] font-bold tracking-[0.4em]  mb-10 text-emerald-400 opacity-90">
-            Premium Plots • Resort Villas • Elite Clubs
-          </p>
+         
+          <p className="text-[9px] md:text-[15px] font-bold tracking-[0.4em]mb-10 text-emerald-400 opacity-90">
+             Premium Plots • Resort Villas • Elite Clubhouse
+           
+          </p> */}
+         
         </motion.div>
-
-        {/* OVERLAPPING 3-WAY TOGGLE - Forced Visibility */}
+         {/* OVERLAPPING 3-WAY TOGGLE - Forced Visibility */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-[120] w-full max-w-[90%] md:max-w-2xl px-2">
+         
           <div className="flex bg-[#021c17] p-1.5 rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10 backdrop-blur-xl h-[75px] md:h-[95px]">
-            {/* VILLAS OPTION */}
+              {/* VILLAS OPTION - Redirect to Home */}
             <button
-              onClick={() => setActiveTab("learn")}
+              onClick={() => {
+                setActiveTab("learn");
+                router.push("/"); // Directs to your main villas page
+              }}
               className={`flex-1 flex items-center justify-center gap-2 md:gap-4 rounded-[2.2rem] text-[9px] md:text-xs font-bold tracking-widest transition-all duration-500 ${
                 activeTab === "learn"
                   ? "bg-emerald-600 text-white shadow-2xl scale-[1.02]"
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-              VILLAS
+               VILLAS
               {activeTab === "learn" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
+                 
                 </motion.div>
               )}
+             
             </button>
-
-            {/* PLOTS OPTION */}
+             {/* PLOTS OPTION - Redirect to /plots */}
             <button
-              onClick={() => setActiveTab("community")}
+              onClick={() => {
+                setActiveTab("community");
+                router.push("/plots"); // Directs to your app/plots/page.js
+              }}
               className={`flex-1 flex items-center justify-center gap-2 md:gap-4 rounded-[2.2rem] text-[9px] md:text-xs font-bold tracking-widest transition-all duration-500 ${
                 activeTab === "community"
                   ? "bg-emerald-600 text-white shadow-2xl scale-[1.02]"
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-              PLOTS
+               PLOTS
               {activeTab === "community" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
+                 
                 </motion.div>
               )}
+             
             </button>
-
-            {/* CLUBS OPTION */}
+             {/* Clubhouse OPTION - Redirect to /Clubhouse */}
             <button
-              onClick={() => setActiveTab("clubs")}
+              onClick={() => {
+                setActiveTab("Clubhouse");
+                router.push("/Clubhouse"); // Directs to your app/Clubhouse/page.js
+              }}
               className={`flex-1 flex items-center justify-center gap-2 md:gap-4 rounded-[2.2rem] text-[9px] md:text-xs font-bold tracking-widest transition-all duration-500 ${
-                activeTab === "clubs"
+                activeTab === "Clubhouse"
                   ? "bg-emerald-600 text-white shadow-2xl scale-[1.02]"
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-              CLUBS
-              {activeTab === "clubs" && (
+               CLUBHOUSE
+              {activeTab === "Clubhouse" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
+                 
                 </motion.div>
               )}
+             
             </button>
+           
           </div>
+         
         </div>
+       
       </section>
       {/* 4. CORE VALUE SECTION */}
       <section className="bg-stone-100 py-20 md:py-30 px-6 md:px-32 text-emerald-950">
@@ -302,7 +330,7 @@ const Page = () => {
                     animate={{ opacity: 1, x: 0, rotate: -4 }}
                     exit={{ opacity: 0, x: -100, rotate: -10 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="absolute w-full h-full object-cover rounded-2xl shadow-2xl border border-white/10"
+                    className="absolute w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-[#ffffff] p-3"
                     alt="Brochure Page"
                   />
                 </AnimatePresence>
@@ -322,53 +350,92 @@ const Page = () => {
               <h4 className="text-3xl md:text-5xl font-Condensed Sans-Serif leading-tight">
                 Download our <br /> digital brochure
               </h4>
-              <motion.button
+              <div className="pt-4">
+                {/* Changed Button to Gold Theme */}
+                <button
+                  style={{
+                    padding: "14px 60px",
+                    backgroundColor: "#22C55E", // Default Gold Background
+                    borderRadius: "8px",
+                    color: "#fff", // Default White Text
+                    fontSize: "1.1rem",
+                    fontWeight: "700",
+                    cursor: "pointer",
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "10px",
+                    position: "relative",
+                    overflow: "hidden",
+                    zIndex: 1,
+                    border: "2px solid #22C55E", // Border keeps the button size stable
+                    margin: "0 auto",
+                    letterSpacing: "1px",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    const fill = e.currentTarget.querySelector(".hover-fill");
+                    const text = e.currentTarget.querySelector(".btn-text");
+
+                    // Slide in the white background
+                    if (fill) fill.style.width = "100%";
+
+                    // Change text color to Gold
+                    if (text) text.style.color = "#22C55E";
+                  }}
+                  onMouseLeave={(e) => {
+                    const fill = e.currentTarget.querySelector(".hover-fill");
+                    const text = e.currentTarget.querySelector(".btn-text");
+
+                    // Slide out the white background
+                    if (fill) fill.style.width = "0%";
+
+                    // Reset text color to White
+                    if (text) text.style.color = "#fff";
+                  }}
+                >
+                  {/* Hover Fill Layer: White */}
+                  <div
+                    className="hover-fill"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "0%",
+                      height: "100%",
+                      background: "#ffffff", // White background on hover
+                      transition: "width 0.4s ease",
+                      zIndex: -1,
+                    }}
+                  />
+
+                  {/* Text Span with Transition */}
+                  <span
+                    className="btn-text"
+                    style={{
+                      position: "relative",
+                      zIndex: 1,
+                      color: "#fff", // Initial color
+                      transition: "color 0.3s ease",
+                    }}
+                  >
+                    Download PDF
+                  </span>
+                </button>
+              </div>
+              {/* <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-[60%] py-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold  tracking-[0.1em] text-[14px] transition-all rounded-xl shadow-2xl"
               >
                 Download PDF
-              </motion.button>
+              </motion.button> */}
             </motion.div>
           </div>
         </div>
       </section>
       <Slider />
-      {/* <section className="py-32 px-6 bg-stone-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
-            className="rounded-[3rem] overflow-hidden shadow-2xl border border-stone-200"
-          >
-            <img src="/assets/images/map-xxl.jpg" alt="Site Map" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000" />
-          </motion.div>
-        </div>
-      </section> */}
-      {/* 6. RESPONSIVE MAP SECTION */}
-      {/* <section className="py-16 md:py-32 px-4 md:px-6 bg-stone-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }} 
-            whileInView={{ opacity: 1, scale: 1 }} 
-            viewport={{ once: true }}
-            className="rounded-2xl md:rounded-[3rem] overflow-hidden shadow-2xl border border-stone-200 bg-white"
-          >
-            {/* h-[300px] md:h-auto -> Ensures the map has a minimum height on mobile so it's readable.
-              object-cover -> Ensures the image fills that height without stretching.
-            */}
-      {/* <img 
-              src="/assets/images/map-xxl.jpg" 
-              alt="Site Map" 
-              className="w-full h-[350px] md:h-auto object-cover md:object-contain grayscale hover:grayscale-0 transition-all duration-1000" 
-            />
-          </motion.div>
-          
-          {/* Added a mobile-only hint to help users know they can see more */}
-      {/* <p className="mt-4 text-center text-emerald-900/40 text-[10px]  tracking-widest md:hidden">
-            Perspective view of the estate
-          </p>
-        </div>
-      </section> */}
       {/* 6. INTERACTIVE MAP, OVERLAPPING FORM & LOCATION INTEL */}
       <section className="relative bg-stone-50 pb-20 md:pb-30 px-4 md:px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -381,8 +448,8 @@ const Page = () => {
           >
             <div className="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
             <img
-              src="/assets/images/nature-valley-map.jpg"
-              alt="The Nature Valley Site Map"
+              src="/assets/images/nature-city-map.jpg"
+              alt="The Nature City Site Map"
               className="w-full h-[400px] md:h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
             />
           </motion.div>
@@ -450,13 +517,87 @@ const Page = () => {
                 </div>
 
                 {/* Submit Button */}
-                <motion.button
+                <div className="pt-4">
+                  {/* Changed Button to Gold Theme */}
+                  <button
+                    style={{
+                      padding: "14px 40px",
+                      backgroundColor: "#22C55E", // Default Gold Background
+                      borderRadius: "8px",
+                      color: "#fff", // Default White Text
+                      fontSize: "1.1rem",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: "10px",
+                      position: "relative",
+                      overflow: "hidden",
+                      zIndex: 1,
+                      border: "2px solid #22C55E", // Border keeps the button size stable
+                      margin: "0 auto",
+                      letterSpacing: "1px",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      const fill = e.currentTarget.querySelector(".hover-fill");
+                      const text = e.currentTarget.querySelector(".btn-text");
+
+                      // Slide in the white background
+                      if (fill) fill.style.width = "100%";
+
+                      // Change text color to Gold
+                      if (text) text.style.color = "#22C55E";
+                    }}
+                    onMouseLeave={(e) => {
+                      const fill = e.currentTarget.querySelector(".hover-fill");
+                      const text = e.currentTarget.querySelector(".btn-text");
+
+                      // Slide out the white background
+                      if (fill) fill.style.width = "0%";
+
+                      // Reset text color to White
+                      if (text) text.style.color = "#fff";
+                    }}
+                  >
+                    {/* Hover Fill Layer: White */}
+                    <div
+                      className="hover-fill"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "0%",
+                        height: "100%",
+                        background: "#ffffff", // White background on hover
+                        transition: "width 0.4s ease",
+                        zIndex: -1,
+                      }}
+                    />
+
+                    {/* Text Span with Transition */}
+                    <span
+                      className="btn-text"
+                      style={{
+                        position: "relative",
+                        zIndex: 1,
+                        color: "#fff", // Initial color
+                        transition: "color 0.3s ease",
+                      }}
+                    >
+                      Schedule a Visit
+                    </span>
+                  </button>
+                </div>
+                {/* <motion.button
                   whileHover={{ scale: 1.02, backgroundColor: "#10b981" }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-emerald-600 text-white font-bold py-5 rounded-xl  tracking-[0.1em] text-[14px] shadow-2xl transition-all"
                 >
                   Schedule a Visit
-                </motion.button>
+                </motion.button> */}
               </form>
             </div>
           </motion.div>
@@ -471,18 +612,92 @@ const Page = () => {
             >
               <h2 className="text-5xl md:text-7xl font-Condensed Sans-Serif text-[#022c22] leading-[1.1]">
                 Minutes from <br />
-                <span className="text-emerald-600 ">
-                  Global Connectivity.
-                </span>
+                <span className="text-emerald-600 ">Global Connectivity.</span>
               </h2>
               <div className="flex flex-col sm:flex-row gap-6">
-                <a href="https://maps.app.goo.gl/kuae33Ga4DcNtWbG7">
-                <button className="bg-emerald-600 cursor-pointer hover:bg-emerald-700 text-white px-8 py-5 rounded-full font-bold  tracking-widest text-[10px] shadow-xl transition-all flex items-center justify-center gap-3 group">
-                  Open in Google Maps
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    ↗
-                  </span>
-                </button>
+                <a href="https://maps.app.goo.gl/J8HYx5LFmu9Yd1Gu7?g_st=ic">
+                  <div className="pt-4">
+                    {/* Changed Button to Gold Theme */}
+                    <button
+                      style={{
+                        padding: "14px 40px",
+                        backgroundColor: "#22C55E", // Default Gold Background
+                        borderRadius: "8px",
+                        color: "#fff", // Default White Text
+                        fontSize: "1.1rem",
+                        fontWeight: "700",
+                        cursor: "pointer",
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "10px",
+                        position: "relative",
+                        overflow: "hidden",
+                        zIndex: 1,
+                        border: "2px solid #22C55E", // Border keeps the button size stable
+                        margin: "0 auto",
+                        letterSpacing: "1px",
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        const fill =
+                          e.currentTarget.querySelector(".hover-fill");
+                        const text = e.currentTarget.querySelector(".btn-text");
+
+                        // Slide in the white background
+                        if (fill) fill.style.width = "100%";
+
+                        // Change text color to Gold
+                        if (text) text.style.color = "#22C55E";
+                      }}
+                      onMouseLeave={(e) => {
+                        const fill =
+                          e.currentTarget.querySelector(".hover-fill");
+                        const text = e.currentTarget.querySelector(".btn-text");
+
+                        // Slide out the white background
+                        if (fill) fill.style.width = "0%";
+
+                        // Reset text color to White
+                        if (text) text.style.color = "#fff";
+                      }}
+                    >
+                      {/* Hover Fill Layer: White */}
+                      <div
+                        className="hover-fill"
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "0%",
+                          height: "100%",
+                          background: "#ffffff", // White background on hover
+                          transition: "width 0.4s ease",
+                          zIndex: -1,
+                        }}
+                      />
+
+                      {/* Text Span with Transition */}
+                      <span
+                        className="btn-text"
+                        style={{
+                          position: "relative",
+                          zIndex: 1,
+                          color: "#fff", // Initial color
+                          transition: "color 0.3s ease",
+                        }}
+                      >
+                        Open in Google Maps
+                      </span>
+                    </button>
+                  </div>
+                  {/* <button className="bg-emerald-600 cursor-pointer hover:bg-emerald-700 text-white px-8 py-5 rounded-full font-bold  tracking-widest text-[10px] shadow-xl transition-all flex items-center justify-center gap-3 group">
+                    Open in Google Maps
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      ↗
+                    </span>
+                  </button> */}
                 </a>
               </div>
             </motion.div>
@@ -597,7 +812,6 @@ const Page = () => {
                   </div>
                 </motion.div>
               </AnimatePresence>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
                 {villaData[orientation].floorPlans.map((plan, idx) => (
                   <motion.div
@@ -637,7 +851,7 @@ const Page = () => {
                 className="bg-emerald-50 p-6 md:p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=800"
+                  src="/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.57 AM.jpeg"
                   alt="Estate Layout"
                   className="w-full h-auto rounded-2xl shadow-lg"
                 />
@@ -664,7 +878,6 @@ const Page = () => {
           </div>
         </div>
       </section>
-
       {/* 9. INVESTMENT ASSET SECTION */}
       <section className="bg-stone-50 py-10 md:py-15">
         <div className="max-w-7xl mx-auto px-6">
@@ -769,9 +982,8 @@ const Page = () => {
           </div>
         </div>
       </section>
-
       {/* 10. AMENITIES SECTION - Bright Glass & Forest */}
-      <section className="bg-[#051d17] py-20 md:py-32 relative overflow-hidden">
+      <section className="bg-[#051d17] py-20 md:py-30 relative overflow-hidden">
         {/* Large White Ambient Light Leak */}
         <div className="absolute -top-24 -left-24 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -785,8 +997,8 @@ const Page = () => {
                   Premium Lifestyle
                 </span>
               </div>
-              <h2 className="text-6xl md:text-8xl font-Condensed Sans-Serif text-white">
-                61+{" "}
+              <h2 className="text-5xl md:text-8xl font-Condensed Sans-Serif text-white">
+                61+
                 <span className="text-white decoration-white/30">
                   Amenities.
                 </span>
@@ -794,7 +1006,7 @@ const Page = () => {
             </div>
             <p className="max-w-md text-white/80 font-light text-lg md:text-xl leading-relaxed">
               From Olympic-sized pools to digital workouts, every detail is
-              crafted for a{" "}
+              crafted for a
               <span className="text-white font-medium">
                 world-class resort experience.
               </span>
@@ -804,7 +1016,7 @@ const Page = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               {
-                label: "Club Life & Pool",
+                label: "Clubhouse Life & Pool",
                 items: [
                   "Function Hall",
                   "Dance Floor",
@@ -877,12 +1089,11 @@ const Page = () => {
           </div>
         </div>
       </section>
-
       {/* 11. FAQ SECTION - Brightened Background */}
-      <section className="relative bg-[#051d17] py-20 md:py-32 overflow-hidden border-t border-white/10">
+      <section className="relative bg-[#051d17] py-20 md:py-30 overflow-hidden border-t border-white/10">
         {/* Brightened Background Image Layer */}
         <div className="absolute inset-0 opacity-60 pointer-events-none">
-          {" "}
+         
           {/* Increased opacity from 0.4 to 0.6 */}
           <AnimatePresence mode="wait">
             <motion.img
@@ -893,7 +1104,7 @@ const Page = () => {
               src={
                 activeImg !== null
                   ? faqBgImages[activeImg]
-                  : "/assets/images/heroimg.jpg"
+                  : "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.20 PM.jpeg"
               }
               className="w-full h-full object-cover brightness-[0.8] contrast-[1.1]"
             />
@@ -927,7 +1138,7 @@ const Page = () => {
                 },
                 {
                   q: "How much does a resort villa cost?",
-                  a: "The investment starts at ₹2.7 crores and scales with villa size. This includes elite clubhouse access and estate management.",
+                  a: "The investment starts at ₹2.7 crores and scales with villa size. This includes elite Clubhousehouse access and estate management.",
                   tag: "Investment",
                 },
                 {
@@ -937,7 +1148,7 @@ const Page = () => {
                 },
                 {
                   q: "What amenities are included in the estate?",
-                  a: "The Valley features 61+ amenities including an Aqua Gym, Digital Workouts, and professional sports courts.",
+                  a: "The City features 61+ amenities including an Aqua Gym, Digital Workouts, and professional sports courts.",
                   tag: "Facilities",
                 },
               ].map((faq, i) => (
@@ -991,140 +1202,217 @@ const Page = () => {
           </div>
         </div>
       </section>
+      <section className="relative bg-[#f8f9f8] py-20 md:py-30 lg:py-32 px-4 sm:px-6 overflow-hidden">
+        {/* Light Aesthetic Background Elements - Hidden on very small screens to improve performance */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[5%] left-[-10%] md:top-[10%] md:left-[15%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-emerald-100 rounded-full blur-[60px] md:blur-[100px]"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2],
+              x: [0, -40, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-[5%] right-[-10%] md:bottom-[10%] md:right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-stone-200 rounded-full blur-[80px] md:blur-[120px]"
+          />
+        </div>
 
-      <section className="relative bg-[#f8f9f8] py-16 md:py-24 lg:py-32 px-4 sm:px-6 overflow-hidden">
-      {/* Light Aesthetic Background Elements - Hidden on very small screens to improve performance */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[5%] left-[-10%] md:top-[10%] md:left-[15%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-emerald-100 rounded-full blur-[60px] md:blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -40, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[5%] right-[-10%] md:bottom-[10%] md:right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-stone-200 rounded-full blur-[80px] md:blur-[120px]"
-        />
-      </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col lg:flex-row rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] md:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] border border-white bg-white/40 backdrop-blur-md"
+          >
+            {/* Left Side: Information (40% Width) */}
+            <div className="lg:w-2/5 p-8 sm:p-12 md:p-16 bg-[#0a241f] flex flex-col justify-between relative overflow-hidden">
+              {/* Subtle texture overlay */}
+              <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col lg:flex-row rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] md:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] border border-white bg-white/40 backdrop-blur-md"
-        >
-          {/* Left Side: Information (40% Width) */}
-          <div className="lg:w-2/5 p-8 sm:p-12 md:p-16 bg-[#0a241f] flex flex-col justify-between relative overflow-hidden">
-            {/* Subtle texture overlay */}
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"></div>
+              <div className="relative z-10 space-y-8 md:space-y-12">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans text-white leading-[1.1] tracking-tight">
+                  Begin your <br />
+                  <span className=" text-emerald-400 font-light">Journey.</span>
+                </h2>
 
-            <div className="relative z-10 space-y-8 md:space-y-12">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans text-white leading-[1.1] tracking-tight">
-                Begin your <br />
-                <span className=" text-emerald-400 font-light">Journey.</span>
-              </h2>
+                <div className="space-y-6 md:space-y-10 pt-8 md:pt-10 border-t border-white/10">
+                  {[
+                    { l: "Sales Inquiry", d: "+91 98450-77177" },
+                    { l: "Estate Office", d: "Devanahalli, Bengaluru" },
+                    { l: "Email", d: "concierge@natureCity.com" },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ x: 10 }}
+                      className="group cursor-default"
+                    >
+                      <p className="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] text-emerald-500 mb-1 md:mb-2 font-black ">
+                        {item.l}
+                      </p>
+                      <p className="text-lg md:text-xl text-white font-light tracking-wide group-hover:text-emerald-200 transition-colors">
+                        {item.d}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-              <div className="space-y-6 md:space-y-10 pt-8 md:pt-10 border-t border-white/10">
-                {[
-                  { l: "Sales Inquiry", d: "+91 98450-77177" },
-                  { l: "Estate Office", d: "Devanahalli, Bengaluru" },
-                  { l: "Email", d: "concierge@naturevalley.com" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ x: 10 }}
-                    className="group cursor-default"
+            {/* Right Side: Form (60% Width) */}
+            <div className="lg:w-3/5 p-8 sm:p-12 md:p-16 lg:p-20 bg-white/90 flex items-center">
+              <div className="w-full">
+                <div className="mb-10 md:mb-14">
+                  <h3 className="text-emerald-950 text-[10px] md:text-[11px] font-black tracking-[0.4em] md:tracking-[0.5em] mb-3 md:mb-4 ">
+                    Discovery Request
+                  </h3>
+                  <div className="h-1 w-10 md:w-12 bg-emerald-600 rounded-full"></div>
+                </div>
+
+                <form className="space-y-8 md:space-y-12">
+                  <div className="relative group">
+                    <input
+                      type="text"
+                      required
+                      placeholder=" "
+                      className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-lg md:text-xl font-light focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
+                    />
+                    <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
+                      Full Name
+                    </label>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div className="relative group">
+                      <input
+                        type="email"
+                        required
+                        placeholder=" "
+                        className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-base focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
+                      />
+                      <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
+                        Email
+                      </label>
+                    </div>
+
+                    <div className="relative group">
+                      <input
+                        type="tel"
+                        required
+                        placeholder=" "
+                        className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-base focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
+                      />
+                      <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
+                        Phone
+                      </label>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    {/* Changed Button to Gold Theme */}
+                    <button
+                      style={{
+                        padding: "14px 40px",
+                        backgroundColor: "#22C55E", // Default Gold Background
+                        borderRadius: "8px",
+                        color: "#fff", // Default White Text
+                        fontSize: "1.1rem",
+                        fontWeight: "700",
+                        cursor: "pointer",
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "10px",
+                        position: "relative",
+                        overflow: "hidden",
+                        zIndex: 1,
+                        border: "2px solid #22C55E", // Border keeps the button size stable
+                        margin: "0 auto",
+                        letterSpacing: "1px",
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        const fill =
+                          e.currentTarget.querySelector(".hover-fill");
+                        const text = e.currentTarget.querySelector(".btn-text");
+
+                        // Slide in the white background
+                        if (fill) fill.style.width = "100%";
+
+                        // Change text color to Gold
+                        if (text) text.style.color = "#22C55E";
+                      }}
+                      onMouseLeave={(e) => {
+                        const fill =
+                          e.currentTarget.querySelector(".hover-fill");
+                        const text = e.currentTarget.querySelector(".btn-text");
+
+                        // Slide out the white background
+                        if (fill) fill.style.width = "0%";
+
+                        // Reset text color to White
+                        if (text) text.style.color = "#fff";
+                      }}
+                    >
+                      {/* Hover Fill Layer: White */}
+                      <div
+                        className="hover-fill"
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "0%",
+                          height: "100%",
+                          background: "#ffffff", // White background on hover
+                          transition: "width 0.4s ease",
+                          zIndex: -1,
+                        }}
+                      />
+
+                      {/* Text Span with Transition */}
+                      <span
+                        className="btn-text"
+                        style={{
+                          position: "relative",
+                          zIndex: 1,
+                          color: "#fff", // Initial color
+                          transition: "color 0.3s ease",
+                        }}
+                      >
+                        Send Request
+                      </span>
+                    </button>
+                  </div>
+
+                  {/* <motion.button
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "#059669",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full md:w-auto px-10 md:px-14 py-4 md:py-5 bg-emerald-600 text-white font-bold rounded-full tracking-[0.2em] text-[10px] shadow-lg flex items-center justify-center gap-4 transition-all"
                   >
-                    <p className="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] text-emerald-500 mb-1 md:mb-2 font-black uppercase">
-                      {item.l}
-                    </p>
-                    <p className="text-lg md:text-xl text-white font-light tracking-wide group-hover:text-emerald-200 transition-colors">
-                      {item.d}
-                    </p>
-                  </motion.div>
-                ))}
+                    Send Request
+                    <span className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </motion.button> */}
+                </form>
               </div>
             </div>
-          </div>
-
-          {/* Right Side: Form (60% Width) */}
-          <div className="lg:w-3/5 p-8 sm:p-12 md:p-16 lg:p-20 bg-white/90 flex items-center">
-            <div className="w-full">
-              <div className="mb-10 md:mb-14">
-                <h3 className="text-emerald-950 text-[10px] md:text-[11px] font-black tracking-[0.4em] md:tracking-[0.5em] mb-3 md:mb-4 uppercase">
-                  Discovery Request
-                </h3>
-                <div className="h-1 w-10 md:w-12 bg-emerald-600 rounded-full"></div>
-              </div>
-
-              <form className="space-y-8 md:space-y-12">
-                <div className="relative group">
-                  <input
-                    type="text"
-                    required
-                    placeholder=" "
-                    className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-lg md:text-xl font-light focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
-                  />
-                  <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
-                    Full Name
-                  </label>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                  <div className="relative group">
-                    <input
-                      type="email"
-                      required
-                      placeholder=" "
-                      className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-base focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
-                    />
-                    <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
-                      Email
-                    </label>
-                  </div>
-
-                  <div className="relative group">
-                    <input
-                      type="tel"
-                      required
-                      placeholder=" "
-                      className="peer w-full bg-transparent border-b border-stone-200 py-3 md:py-4 text-emerald-950 text-base focus:outline-none focus:border-emerald-600 transition-all placeholder-transparent"
-                    />
-                    <label className="absolute left-0 -top-4 text-[9px] md:text-[10px] tracking-widest font-bold text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-emerald-600">
-                      Phone
-                    </label>
-                  </div>
-                </div>
-
-                <motion.button
-                  whileHover={{
-                    scale: 1.02,
-                    backgroundColor: "#059669",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full md:w-auto px-10 md:px-14 py-4 md:py-5 bg-emerald-600 text-white font-bold rounded-full tracking-[0.2em] text-[10px] shadow-lg flex items-center justify-center gap-4 transition-all"
-                >
-                  Send Request
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </motion.button>
-              </form>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+      </section>
       <Footer />
     </div>
   );
