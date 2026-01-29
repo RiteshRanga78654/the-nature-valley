@@ -13,8 +13,11 @@ const Page = () => {
   const [currentBrochureIndex, setCurrentBrochureIndex] = useState(0);
 
   const brochureImages = [
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1000",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000",
+    "/assets/images/db-the-nature-city.jpeg",
+    "/assets/images/hero image.jfif",
+    "assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.24 PM.jpeg",
+    "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.21 PM (1).jpeg",
+    "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.15 PM (1).jpeg"
   ];
 
   // 1. State for tracking hovered FAQ to change background
@@ -22,10 +25,10 @@ const Page = () => {
 
   // 2. Images that will fade-in when you hover over questions
   const faqBgImages = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200", // Architecture
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200", // Financials
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200", // Returns
-    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200", // Facilities
+   "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.22 PM (2).jpeg",
+  "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.17 PM.jpeg",
+  "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.18 PM (1).jpeg",
+   "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.18 PM.jpeg"
   ];
   const nextBrochure = () => {
     setCurrentBrochureIndex((prev) => (prev + 1) % brochureImages.length);
@@ -39,10 +42,10 @@ const Page = () => {
       price: "₹3.5Cr",
       size: "3175 sft built up",
       heroImg:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.59 AM (2).jpeg",
       floorPlans: [
-        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=800",
-        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.54 AM (1).jpeg",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.56 AM (2).jpeg",
       ],
     },
     west: {
@@ -50,10 +53,10 @@ const Page = () => {
       price: "₹3.4Cr",
       size: "3175 sft built up",
       heroImg:
-        "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.59 AM (1).jpeg",
       floorPlans: [
-        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800",
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.57 AM (1).jpeg",
+        "/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.56 AM (1).jpeg",
       ],
     },
   };
@@ -134,18 +137,20 @@ const Page = () => {
       {/* 3. HERO SECTION - REDUCED HEIGHT FOR FOLD VISIBILITY */}
       <section className="relative h-[85vh] md:h-[90vh] w-full flex items-center justify-center overflow-visible">
         {/* Background Image Container */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/assets/images/heroimg.jpg')",
-          }}
-        >
-          
-          {/* Adjusted gradient to be lighter at the top and darker at the bottom for the toggle */}
-          
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#022c22]/60"></div>
-          
-        </div>
+       <div className="absolute inset-0 overflow-hidden">
+  <video
+    autoPlay
+    loop
+    playsInline
+    className="absolute inset-0 h-full w-full object-cover"
+  >
+    <source src="/assets/videos/herovideo.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* Your existing gradient overlay remains the same */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#022c22]/60"></div>
+</div>
          {/* Hero Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -153,16 +158,16 @@ const Page = () => {
           transition={{ duration: 1 }}
           className="relative z-10 text-center px-4 -mt-10"
         >
-          
-          <h1 className="text-5xl md:text-[110px] leading-[0.85] font-Condensed Sans-Serif mb-6 text-emerald-400 tracking-tight">
-             Nature's Embrace 
+         
+          {/* <h1 className="text-5xl md:text-[110px] leading-[0.85] font-Condensed Sans-Serif mb-6 text-emerald-400 tracking-tight">
+             Nature's Embrace
           </h1>
-          
+         
           <p className="text-[9px] md:text-[15px] font-bold tracking-[0.4em]mb-10 text-emerald-400 opacity-90">
-             Premium Plots • Resort Villas • Elite Clubhouse 
+             Premium Plots • Resort Villas • Elite Clubhouse
            
-          </p>
-          
+          </p> */}
+         
         </motion.div>
          {/* OVERLAPPING 3-WAY TOGGLE - Forced Visibility */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-[120] w-full max-w-[90%] md:max-w-2xl px-2">
@@ -180,19 +185,19 @@ const Page = () => {
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-               VILLAS 
+               VILLAS
               {activeTab === "learn" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
-                  
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
                  
                 </motion.div>
               )}
-              
+             
             </button>
              {/* PLOTS OPTION - Redirect to /plots */}
             <button
@@ -206,19 +211,19 @@ const Page = () => {
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-               PLOTS 
+               PLOTS
               {activeTab === "community" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
-                  
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
                  
                 </motion.div>
               )}
-              
+             
             </button>
              {/* Clubhouse OPTION - Redirect to /Clubhouse */}
             <button
@@ -232,25 +237,25 @@ const Page = () => {
                   : "text-stone-400 hover:text-stone-200"
               }`}
             >
-               CLUBHOUSE 
+               CLUBHOUSE
               {activeTab === "Clubhouse" && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="h-5 w-5 md:h-7 md:w-7 rounded-full border-2 border-white/50 flex items-center justify-center"
                 >
-                  
+                 
                   <span className="text-[10px] md:text-xs">✓</span>
                  
                 </motion.div>
               )}
-              
+             
             </button>
            
           </div>
          
         </div>
-        
+       
       </section>
       {/* 4. CORE VALUE SECTION */}
       <section className="bg-stone-100 py-20 md:py-30 px-6 md:px-32 text-emerald-950">
@@ -325,7 +330,7 @@ const Page = () => {
                     animate={{ opacity: 1, x: 0, rotate: -4 }}
                     exit={{ opacity: 0, x: -100, rotate: -10 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="absolute w-full h-full object-cover rounded-2xl shadow-2xl border border-white/10"
+                    className="absolute w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-[#ffffff] p-3"
                     alt="Brochure Page"
                   />
                 </AnimatePresence>
@@ -846,7 +851,7 @@ const Page = () => {
                 className="bg-emerald-50 p-6 md:p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=800"
+                  src="/assets/images/slider/WhatsApp Image 2026-01-29 at 11.12.57 AM.jpeg"
                   alt="Estate Layout"
                   className="w-full h-auto rounded-2xl shadow-lg"
                 />
@@ -1088,7 +1093,7 @@ const Page = () => {
       <section className="relative bg-[#051d17] py-20 md:py-30 overflow-hidden border-t border-white/10">
         {/* Brightened Background Image Layer */}
         <div className="absolute inset-0 opacity-60 pointer-events-none">
-          
+         
           {/* Increased opacity from 0.4 to 0.6 */}
           <AnimatePresence mode="wait">
             <motion.img
@@ -1099,7 +1104,7 @@ const Page = () => {
               src={
                 activeImg !== null
                   ? faqBgImages[activeImg]
-                  : "/assets/images/heroimg.jpg"
+                  : "/assets/images/nature-city-img/WhatsApp Image 2026-01-28 at 6.36.20 PM.jpeg"
               }
               className="w-full h-full object-cover brightness-[0.8] contrast-[1.1]"
             />
