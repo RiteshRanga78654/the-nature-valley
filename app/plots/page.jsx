@@ -195,6 +195,7 @@ useEffect(() => {
             <video
               autoPlay
               loop
+              muted
               playsInline
               className="absolute inset-0 h-full w-full object-cover"
             >
@@ -266,11 +267,11 @@ useEffect(() => {
         }`}
               >
                 <span
-                  className={`font-serif italic leading-none transition-all duration-500 ${activeTab === "learn" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
+                  className={`font-serif  leading-none transition-all duration-500 ${activeTab === "learn" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
                 >
                   Buy
                 </span>
-                <span className="text-[7px] md:text-[9px] font-bold tracking-[0.15em] uppercase">
+                <span className="text-[7px] md:text-[13px] font-bold tracking-[0.15em] uppercase">
                   A Resort Villa
                 </span>
               </button>
@@ -289,11 +290,11 @@ useEffect(() => {
         }`}
               >
                 <span
-                  className={`font-serif italic leading-none transition-all duration-500 ${activeTab === "community" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
+                  className={`font-serif  leading-none transition-all duration-500 ${activeTab === "community" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
                 >
                   Invest
                 </span>
-                <span className="text-[7px] md:text-[9px] font-bold tracking-[0.15em] uppercase">
+                <span className="text-[7px] md:text-[13px] font-bold tracking-[0.15em] uppercase">
                   In A Plot
                 </span>
               </button>
@@ -312,11 +313,11 @@ useEffect(() => {
         }`}
               >
                 <span
-                  className={`font-serif italic leading-none transition-all duration-500 ${activeTab === "Clubhouse" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
+                  className={`font-serif  leading-none transition-all duration-500 ${activeTab === "Clubhouse" ? "text-3xl md:text-4xl mb-1" : "text-xl md:text-2xl"}`}
                 >
                   Enjoy
                 </span>
-                <span className="text-[7px] md:text-[9px] font-bold tracking-[0.15em] uppercase">
+                <span className="text-[7px] md:text-[13px] font-bold tracking-[0.15em] uppercase">
                   The Clubhouse
                 </span>
               </button>
