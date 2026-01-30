@@ -168,7 +168,7 @@ const Page = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-[120] w-full max-w-[90%] md:max-w-2xl px-2">
          
           <div className="flex bg-[#021c17] p-1.5 rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10 backdrop-blur-xl h-[75px] md:h-[95px]">
-              {/* VILLAS OPTION - Redirect to Home */}
+              
             <button
               onClick={() => {
                 setActiveTab("learn");
@@ -194,7 +194,7 @@ const Page = () => {
               )}
               
             </button>
-             {/* PLOTS OPTION - Redirect to /plots */}
+             
             <button
               onClick={() => {
                 setActiveTab("community");
@@ -220,7 +220,7 @@ const Page = () => {
               )}
               
             </button>
-             {/* Clubhouse OPTION - Redirect to /Clubhouse */}
+            
             <button
               onClick={() => {
                 setActiveTab("Clubhouse");
